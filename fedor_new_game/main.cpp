@@ -35,7 +35,28 @@ const long long INF = 1e9 + 7;
 
 
 int main() {
-    ll
-    cin >>
+    ll n, m, k;
+    cin >> n;
+    cin >> m;
+    cin >> k;
+    vector<ll> bits(m + 1);
+    for(int i = 0; i <= m; i++)
+        cin>> bits[i];
+
+    ll ans= 0;
+
+    for(int i = 0; i < m; i++){
+        int kMax=0;
+        for(int j = 0; j < 20; j++){
+            int aux1 = (bits[i] >> j) & 1;
+            int aux2 = (bits[m] >> j) & 1;
+
+             if(aux1 != aux2)
+                kMax++;
+        }
+        if(kMax <= k)
+            ans++;
+    }
+    cout << ans << endl;
 	return 0;
 }

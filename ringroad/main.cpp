@@ -35,7 +35,22 @@ const long long INF = 1e9 + 7;
 
 
 int main() {
-    ll
-    cin >>
+    ll n, m;
+    cin >> n;
+    cin >> m;
+    vector<ll> ringroad(m);
+    for(int i = 0; i < m; i++)
+        cin >> ringroad[i];
+    ll ans = 0;
+    ll curr = 1;
+    for(int i = 0; i < m; i++){
+        if(curr > ringroad[i])
+            ans += n - curr + ringroad[i];
+        else
+            ans += ringroad[i] - curr;
+        curr = ringroad[i];
+    }
+
+    cout << ans << endl;
 	return 0;
 }
