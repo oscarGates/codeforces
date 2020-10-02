@@ -35,15 +35,33 @@ const long long INF = 1e9 + 7;
 
 
 int main() {
-    ll n;
+    ll n, m;
+
     cin >> n;
-    vector<ll> nums(n);
-     vector<ll> nums(n);
+    cin >> m;
 
-    for(int i = 0; i < n; i++)
-        cin >> nums[i];
+    unordered_map<string, string> umap;
+    vector<string> arr(n);
 
-    sort(nums.begin(), nums.end())
+    for(int i= 0; i < m; i++){
+        string aux, aux2;
+        cin >> aux;
+        cin >> aux2;
+        umap[aux] = aux2;
+    }
 
-	return 0;
+    for(int i = 0; i < n; i++){
+        cin >> arr[i];
+    }
+
+    for(int i = 0; i < arr.size(); i++){
+        ll s1 = arr[i].size();
+        ll s2 = umap[arr[i]].size();
+        if(s1 <= s2 ){
+            cout << arr[i] << " ";
+        } else {
+            cout << umap[arr[i]] << " ";
+        }
+    }
+   	return 0;
 }

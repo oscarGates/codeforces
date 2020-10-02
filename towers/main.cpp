@@ -37,13 +37,18 @@ const long long INF = 1e9 + 7;
 int main() {
     ll n;
     cin >> n;
-    vector<ll> nums(n);
-     vector<ll> nums(n);
+    vector <ll> arr(n);
 
-    for(int i = 0; i < n; i++)
-        cin >> nums[i];
+    for(int i = 0; i < n; i++){
+        cin >> arr[i];
+    }
 
-    sort(nums.begin(), nums.end())
-
+    unordered_map<ll,ll> umap;
+    ll maxVal = 0;
+    for(int i = 0; i < n; i++){
+        umap[arr[i]]++;
+        maxVal = max(maxVal, umap[arr[i]]);
+    }
+    cout << maxVal << " "<< umap.size() << endl;
 	return 0;
 }
