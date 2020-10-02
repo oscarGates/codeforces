@@ -37,13 +37,15 @@ const long long INF = 1e9 + 7;
 int main() {
     ll n;
     cin >> n;
-    vector<ll> nums(n);
-     vector<ll> nums(n);
-
-    for(int i = 0; i < n; i++)
-        cin >> nums[i];
-
-    sort(nums.begin(), nums.end())
-
+    vector<ll> arr(n);
+    for(int i = 0; i < n; i++){
+        cin >> arr[i];
+    }
+    sort(arr.begin(), arr.end());
+    ll ans = 0;
+    for(int i = 0; i < n; i+= 2){
+        ans += arr[i + 1] - arr[i];
+    }
+    cout << ans << endl;
 	return 0;
 }

@@ -35,15 +35,51 @@ const long long INF = 1e9 + 7;
 
 
 int main() {
+    ll length = 10000001;
+    vector<bool> sieve(length, true);
+    vector<ll> vect(0);
     ll n;
     cin >> n;
-    vector<ll> nums(n);
-     vector<ll> nums(n);
+    vector<ll> arr(n);
+    for(int i = 0; i < n; i++){
+        cin >> arr[i];
+    }
 
-    for(int i = 0; i < n; i++)
-        cin >> nums[i];
+    for(int i= 2; i < length; i++){
+        int aux = 2;
 
-    sort(nums.begin(), nums.end())
+        if(!sieve[i])
+            continue;
 
+
+        vect.insert(vect.end(), i);
+
+        while( aux * i < length){
+            sieve[aux * i] = false;
+            aux++;
+        }
+    }
+    for(int x = 0; x < n; x++){
+        int i= 0, j = vect.size() - 1;
+        bool flag = false;
+        while(i < j){
+            ll mid = i + (j - i) / 2;
+            ll val = vect[mid] * vect[mid];
+            if(val == arr[x]){
+                flag = true;
+                break;
+            } else if( val < arr[x]){
+                i = mid + 1;
+            } else {
+                j = mid;
+            }
+        }
+
+        if(flag){
+            cout << "YES" << endl;
+        } else {
+            cout << "NO" << endl;
+        }
+    }
 	return 0;
 }

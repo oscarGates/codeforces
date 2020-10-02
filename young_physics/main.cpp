@@ -37,13 +37,22 @@ const long long INF = 1e9 + 7;
 int main() {
     ll n;
     cin >> n;
-    vector<ll> nums(n);
-     vector<ll> nums(n);
-
+    vector<vector<ll>> arr(n, vector<ll>(3));
     for(int i = 0; i < n; i++)
-        cin >> nums[i];
+       for(int j = 0; j < 3; j++)
+            cin >> arr[i][j];
 
-    sort(nums.begin(), nums.end())
+    for(int i = 0; i < 3; i++){
+        ll sum  = 0;
+        for(int j = 0; j < n; j++){
+            sum += arr[j][i];
+        }
+        if(sum != 0){
+            cout << "NO" << endl;
+            return 0;
+        }
 
+    }
+    cout << "YES" << endl;
 	return 0;
 }

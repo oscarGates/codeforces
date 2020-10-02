@@ -35,15 +35,21 @@ const long long INF = 1e9 + 7;
 
 
 int main() {
-    ll n;
-    cin >> n;
-    vector<ll> nums(n);
-     vector<ll> nums(n);
+    ll n,m;
+    cin >> n >> m;
+    vector<ll> arr(n);
+    for(int i = 0; i < n; i++){
+        cin >> arr[i];
+    }
+    sort(arr.begin(), arr.end());
+    ll ans = 0, i = 0, j = 0;
+    while(arr[j] < 0 && j < m){
+        ans += arr[j];
 
-    for(int i = 0; i < n; i++)
-        cin >> nums[i];
+        j++;
 
-    sort(nums.begin(), nums.end())
-
+    }
+    ans *= -1;
+    cout << ans << endl;
 	return 0;
 }
