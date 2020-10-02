@@ -35,6 +35,35 @@ const long long INF = 1e9 + 7;
 
 
 int main() {
+    ll n, m;
+    cin >> n >> m;
+    if(m == 0){
+        cout << "YES" << endl;
+        return 0;
+    }
 
-	return 0;
+    vector <ll> dirtyStair(m);
+    for(int i = 0; i < m; i++){
+        cin >> dirtyStair[i];
+    }
+    sort(dirtyStair.begin(), dirtyStair.end());
+    if(dirtyStair[0] == 1 || dirtyStair[m - 1] == n){
+        cout << "NO"<< endl;
+        return 0;
+
+    }
+
+    ll counter = 0;
+
+    for(int i = 1; i < m; i++){
+       if(dirtyStair[i] == dirtyStair[i -1] + 1){
+            counter++;
+       } else counter = 0;
+       if(counter >= 2){
+            cout << "NO"<< endl;
+            return 0;
+       }
+    }
+    cout << "YES" << endl;
+    return 0;
 }

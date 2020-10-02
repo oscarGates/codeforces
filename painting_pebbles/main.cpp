@@ -27,7 +27,7 @@ const   int            inf = 0;
 const   double         eps = 0;
 const   int            ms  = 0;
 const   int            md  = 0;
-//     vector<vector<int> > vec( n , vector<int> (m));
+
 const int MAX_N = 1e5 + 5;
 const int MAX_L = 20; // ~ Log N
 const long long MOD = 1e9 + 7;
@@ -35,6 +35,39 @@ const long long INF = 1e9 + 7;
 
 
 int main() {
+    ll n, k;
+    cin >> n;
+    cin >> k;
+    vector<ll> arr(n);
+    for(int i = 0; i < n; i++)
+        cin >> arr[i];
 
+    for(int i = 0; i < n; i++){
+       for(int j = i + 1; j < n; j++){
+            if(abs(arr[i] - arr[j]) > k){
+                cout << "NO" << endl;
+                return 0;
+            }
+       }
+    }
+    ll minVal = INF;
+    for(int i = 0; i < n; i++){
+        minVal = min(minVal, arr[i]);
+    }
+    cout << "YES"<< endl;
+    for(int i = 0; i < n; i++){
+        int j = 0;
+        int color = 1;
+        while(j < minVal){
+            cout << color << " ";
+            j++;
+        }
+        while(j < arr[i]){
+            cout << color << " ";
+            color++;
+            j++;
+        }
+        cout << endl;
+    }
 	return 0;
 }

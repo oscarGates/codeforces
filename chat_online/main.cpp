@@ -27,14 +27,43 @@ const   int            inf = 0;
 const   double         eps = 0;
 const   int            ms  = 0;
 const   int            md  = 0;
-//     vector<vector<int> > vec( n , vector<int> (m));
+
 const int MAX_N = 1e5 + 5;
 const int MAX_L = 20; // ~ Log N
 const long long MOD = 1e9 + 7;
 const long long INF = 1e9 + 7;
 
+bool itOverlap(ll a, ll b, ll c, ll d){
+    return !(b < c || d < a);
+}
 
 int main() {
+    ll p, q, l, r;
+    cin >> p >> q >> l >> r;
+    vector<vector<ll> > vectZ( p , vector<ll> (2));
+    vector<vector<ll> > vectX( q , vector<ll> (2));
 
+    for(int i = 0; i < p; i++){
+        cin >> vectZ[i][0] >> vectZ[i][1];
+    }
+
+    for(int i = 0; i < q; i++){
+        cin >> vectX[i][0] >> vectX[i][1];
+    }
+    ll maxValue = -INF;
+    for(int i = l; i <= r; i++){
+        ll counter = 0;
+        for(int j = 0; j < p; j++){
+            for(int k = 0; k < q; k++){
+                ll x1 = i + vectX[k][0], x2 = i + vectX[k][1];
+                if(itOverlap(vectZ[j][0], vectZ[j][1], x1, x2)){
+                    counter++;
+                }
+            }
+        }
+        maxValue = max(maxValue, counter);
+    }
+
+    cout << maxValue << endl;
 	return 0;
 }

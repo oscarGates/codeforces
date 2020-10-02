@@ -35,6 +35,28 @@ const long long INF = 1e9 + 7;
 
 
 int main() {
+    ll n, k;
+    cin >> n >> k;
+    vector<ll> vect(n);
 
+    for(int i = 0; i < n; i++)
+        cin >> vect[i];
+
+    ll i= 0, j = 0, w = 0, ans = -1;
+
+    while(j < n){
+        w += vect[j];
+        if(k >= w ){
+            ans = max(ans, j - i);
+            j++;
+            continue;
+        }
+        while(k < w){
+            w -= vect[i];
+            i++;
+        }
+        w -= vect[j];
+    }
+    cout << ans + 1 << endl;
 	return 0;
 }
