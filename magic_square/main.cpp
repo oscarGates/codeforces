@@ -27,7 +27,7 @@ const   int            inf = 0;
 const   double         eps = 0;
 const   int            ms  = 0;
 const   int            md  = 0;
-//     vector<vector<int> > vec( n , vector<int> (m));
+
 const int MAX_N = 1e5 + 5;
 const int MAX_L = 20; // ~ Log N
 const long long MOD = 1e9 + 7;
@@ -35,6 +35,41 @@ const long long INF = 1e9 + 7;
 
 
 int main() {
+    ll MAX = 1000000;
+    ll arr[9];
+    for(int i = 0; i < 9; i++){
+        cin >> arr[i];
+    }
+    ll sums[]= {arr[1] + arr[6], arr[3] + arr[7], arr[1] + arr[7] ,
+    arr[3] + arr[5], arr[2] + arr[6], arr[2] + arr[5],
+    arr[6] + arr[7]};
 
+    for(int i = 1; i <= MAX; i++){
+        ll x1 = i;
+        ll y = (x1 + sums[0] == x1 + sums[1])? x1 + sums[0]: -1;
+
+        ll aux1 = y - sums[2], aux2 = y - sums[3], aux3 = y - sums[4];
+        ll x2 = (aux1 == aux2 && aux2 == aux3)?  aux1: -1;
+
+        aux1 = y - sums[5], aux2 = y - sums[6];
+        ll x3 = (aux1 == aux2)? aux1: -1;
+
+        if(y == -1 || x2 == -1 || x3 == -1)
+            continue;
+        if(y == x1 + x2 + x3){
+            arr[0] = x1;
+            arr[4] = x2;
+            arr[8] = x3;
+            break;
+        }
+
+
+    }
+    for(int i = 0; i < 3; i++){
+        for(int j = 0; j < 3; j++){
+            cout << arr[3* i + j] << " ";
+        }
+        cout << endl;
+    }
 	return 0;
 }

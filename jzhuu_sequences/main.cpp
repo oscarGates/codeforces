@@ -27,14 +27,17 @@ const   int            inf = 0;
 const   double         eps = 0;
 const   int            ms  = 0;
 const   int            md  = 0;
-//     vector<vector<int> > vec( n , vector<int> (m));
-const int MAX_N = 1e5 + 5;
-const int MAX_L = 20; // ~ Log N
-const long long MOD = 1e9 + 7;
-const long long INF = 1e9 + 7;
 
 
 int main() {
 
+    ll x, y, n;
+    ll mod = 1000000007;
+    cin >> x;
+    cin >> y;
+    cin >> n;
+
+    ll ans[]  = {x, y, y-x, -x, -y, x-y};
+    cout << ((ans[(n - 1) % 6] % mod + mod) % mod )<< endl;
 	return 0;
 }
