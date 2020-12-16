@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1606618011 source:c:\users\venga\documents\projects\garland\main.cpp
+	<iostream>
+	<vector>
+
